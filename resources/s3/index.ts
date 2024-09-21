@@ -95,22 +95,19 @@ export class S3Resource extends ComponentResource {
       { parent: this, dependsOn: [this.bucket] }
     );
 
-    const files = sync(`${www}/**`,
-      {
-        cwd: resolve(www),
-        dot: true,
-        nodir: true,
-        follow: true,
-      }
-    );
+    const files = sync(`${www}/**`, {
+      cwd: www,
+      dot: true,
+      nodir: true,
+      follow: true,
+      absolute: true
+    }).map((file) => file.split(sep).join('/'));
+
 
     for (const file of files) {
       const hex = computeHexHash(file);
 
-      // Add all files to the same level /
-      const ssr_key = file.split(www)[1]
-
-      let key = ssr_key;
+      let key = file.split(www.split(sep).join('/'))[1];
 
       let removed_dot_html = false;
 
@@ -126,7 +123,7 @@ export class S3Resource extends ComponentResource {
         {
           bucket: this.bucket.id,
           key,
-          source: new FileAsset(resolve(www, file)),
+          source: new FileAsset(file),
           contentType: removed_dot_html ? "text/html" : mime.getType(file) || undefined,
         },
         { parent: this, dependsOn: [this.policy, this.bucket] }
@@ -138,7 +135,7 @@ export class S3Resource extends ComponentResource {
       {
         bucket: this.bucket.id,
         indexDocument: { suffix: "index.html" },
-        errorDocument: { key: "404" },
+        errorDocument: { key: "404/index.html", },
       },
       { parent: this, dependsOn: [this.bucket, this.policy, this.access] }
     );
