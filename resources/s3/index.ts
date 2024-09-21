@@ -4,7 +4,7 @@ import { s3 } from "@pulumi/aws";
 import { FileAsset } from "@pulumi/pulumi/asset";
 import { createHash } from "crypto";
 import { sync } from "glob";
-import { resolve } from "path";
+import { sep } from "path";
 import * as mime from "mime";
 
 /* ---------- Types ---------- */
