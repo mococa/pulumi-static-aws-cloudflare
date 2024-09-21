@@ -1,0 +1,17 @@
+{
+    "name": "pulumi-static-cloudflare-aws",
+    "main": "index.ts",
+    "devDependencies": {
+        "@types/mime": "^3.0.2",
+        "@types/node": "^18",
+        "typescript": "^5.0.0"
+    },
+    "dependencies": {
+        "@pulumi/aws": "^6.0.0",
+        "@pulumi/awsx": "^2.0.2",
+        "@pulumi/cloudflare": "^5.35.1",
+        "@pulumi/pulumi": "^3.113.0",
+        "@pulumi/tls": "^5.0.6",
+        "mime": "^3.0.0"
+    }
+}

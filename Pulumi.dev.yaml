@@ -1,0 +1,4 @@
+config:
+  aws:region: sa-east-1
+  pulumi-static-cloudflare-aws:cloudflare-zone-id: 61216588803ecf8dec9990d779d990a6
+  cloudflare:apiToken: CLOUDFLARE_API_KEY

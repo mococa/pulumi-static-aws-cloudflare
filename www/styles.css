@@ -1,0 +1,17 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Centraliza verticalmente */
+    min-height: 100vh; /* Garante que o corpo ocupe pelo menos 100% da altura da tela */
+    padding-top: 80px; /* Espaço para o cabeçalho */
+}
